@@ -1,10 +1,11 @@
 :root {
   /* Ramboll brand palette */
-  --ramboll-blue: #0033a0;
-  --ramboll-blue-dark: #001e60;
-  --ramboll-cyan: #00a9ce;
+  --ramboll-navy: #001b45;
+  --ramboll-blue: #009df0;
+  --ramboll-blue-hover: #007ec5;
   --ramboll-grey: #53565a;
-  --ramboll-light: #f4f6f9;
+  --ramboll-light: #f5f5f5;
+  --ramboll-border: #dde1e7;
   --panel-width: 340px;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   color: #1a1a1a;
@@ -33,34 +34,41 @@ body,
 .app-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px 18px;
-  background: var(--ramboll-blue);
-  color: #fff;
+  gap: 18px;
+  padding: 0 24px;
+  height: 56px;
+  background: #fff;
+  color: var(--ramboll-navy);
   flex: 0 0 auto;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 1px 0 var(--ramboll-border);
   z-index: 10;
 }
 
 .app-header .logo {
-  font-weight: 800;
-  font-size: 20px;
-  letter-spacing: 0.5px;
+  height: 22px;
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
 }
 
 .app-header .title {
-  font-size: 15px;
-  opacity: 0.92;
+  font-size: 14px;
+  color: var(--ramboll-grey);
+  font-weight: 400;
+  border-left: 1px solid var(--ramboll-border);
+  padding-left: 18px;
 }
 
 .app-header .mode-badge {
   margin-left: auto;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
-  background: rgba(255, 255, 255, 0.16);
-  padding: 4px 10px;
-  border-radius: 999px;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  background: var(--ramboll-blue);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 3px;
 }
 
 /* ---- Body layout ---- */
@@ -74,7 +82,7 @@ body,
   width: var(--panel-width);
   flex: 0 0 var(--panel-width);
   background: var(--ramboll-light);
-  border-right: 1px solid #dce1e8;
+  border-right: 1px solid var(--ramboll-border);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -93,22 +101,23 @@ body,
 
 /* ---- Panels ---- */
 .panel {
-  padding: 14px 16px;
-  border-bottom: 1px solid #e1e6ee;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--ramboll-border);
 }
 
 .panel h2 {
   margin: 0 0 10px;
-  font-size: 13px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
-  color: var(--ramboll-grey);
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  color: var(--ramboll-navy);
 }
 
 /* ---- Dropzone ---- */
 .dropzone {
-  border: 2px dashed var(--ramboll-cyan);
-  border-radius: 10px;
+  border: 2px dashed var(--ramboll-blue);
+  border-radius: 4px;
   padding: 22px 14px;
   text-align: center;
   color: var(--ramboll-grey);
@@ -118,12 +127,12 @@ body,
 }
 
 .dropzone.drag {
-  background: #e9f8fc;
-  border-color: var(--ramboll-blue);
+  background: #e6f5fd;
+  border-color: var(--ramboll-blue-hover);
 }
 
 .dropzone strong {
-  color: var(--ramboll-blue);
+  color: var(--ramboll-navy);
 }
 
 .dropzone .formats {
@@ -138,9 +147,9 @@ body,
   align-items: center;
   gap: 8px;
   padding: 7px 8px;
-  border-radius: 7px;
+  border-radius: 3px;
   background: #fff;
-  border: 1px solid #e1e6ee;
+  border: 1px solid var(--ramboll-border);
   margin-bottom: 6px;
 }
 
@@ -162,10 +171,12 @@ body,
 .layer .kind {
   font-size: 10px;
   text-transform: uppercase;
-  color: var(--ramboll-grey);
-  background: #eef1f6;
+  color: var(--ramboll-navy);
+  background: #e6f5fd;
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
 }
 
 .layer button,
@@ -193,8 +204,8 @@ body,
 /* ---- Contact panel ---- */
 .contact {
   background: #fff;
-  border: 1px solid #e1e6ee;
-  border-radius: 10px;
+  border: 1px solid var(--ramboll-border);
+  border-radius: 3px;
   padding: 12px;
 }
 
@@ -202,7 +213,7 @@ body,
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--ramboll-cyan);
+  color: var(--ramboll-blue);
   font-weight: 700;
 }
 
@@ -232,12 +243,18 @@ body,
 .contact .cta {
   margin-top: 10px;
   display: inline-block;
-  background: var(--ramboll-blue);
+  background: var(--ramboll-navy);
   color: #fff;
-  padding: 7px 12px;
-  border-radius: 6px;
+  padding: 8px 16px;
+  border-radius: 3px;
   font-size: 12px;
   font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.contact .cta:hover {
+  background: var(--ramboll-blue);
   text-decoration: none;
 }
 
