@@ -20,7 +20,7 @@ def _read_any(path: Path) -> gpd.GeoDataFrame:
         shp = _find_in_zip(path, ".shp")
         if shp is None:
             raise ValueError("Zip does not contain a .shp file")
-        return gpd.read_file(f"zip://{path}!{shp}")
+        return gpd.read_file(f"/vsizip/{path}/{shp}")
     return gpd.read_file(path)
 
 
