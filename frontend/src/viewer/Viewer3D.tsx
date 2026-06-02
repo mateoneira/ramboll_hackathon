@@ -44,6 +44,18 @@ export default function Viewer3D() {
     viewer.camera.setView({
       destination: Cesium.Cartesian3.fromDegrees(12.5683, 55.6761, 500_000),
     })
+
+    // Fixed directional light so geometry shading is always readable —
+    // sun-based lighting can be nearly overhead for Denmark in summer,
+    // washing out depth cues. This direction approximates afternoon sun from WSW.
+    viewer.scene.light = new Cesium.DirectionalLight({
+      direction: Cesium.Cartesian3.normalize(
+        new Cesium.Cartesian3(-1.0, -0.5, -1.0),
+        new Cesium.Cartesian3(),
+      ),
+      intensity: 2.5,
+    })
+
     viewerRef.current = viewer
     // Sync any layers already in the store when the viewer first mounts.
     syncGlbLayers(viewer, useLayers.getState().layers, cacheRef.current)
