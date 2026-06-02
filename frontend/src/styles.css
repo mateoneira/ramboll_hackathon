@@ -59,13 +59,40 @@ body,
   padding-left: 18px;
 }
 
+.viewer-toggle {
+  display: flex;
+  border: 1px solid var(--ramboll-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.viewer-toggle button {
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fff;
+  color: var(--ramboll-grey);
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+}
+
+.viewer-toggle button + button {
+  border-left: 1px solid var(--ramboll-border);
+}
+
+.viewer-toggle button.active {
+  background: var(--ramboll-blue);
+  color: #fff;
+}
+
 .app-header .mode-badge {
   margin-left: auto;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: 600;
-  background: var(--ramboll-blue);
+  background: var(--ramboll-navy);
   color: #fff;
   padding: 4px 12px;
   border-radius: 3px;
@@ -150,7 +177,7 @@ body,
   border-radius: 3px;
   background: #fff;
   border: 1px solid var(--ramboll-border);
-  margin-bottom: 6px;
+  margin-bottom: 0;
 }
 
 .layer .swatch {
@@ -256,6 +283,88 @@ body,
 .contact .cta:hover {
   background: var(--ramboll-blue);
   text-decoration: none;
+}
+
+/* ---- Layer item wrapper ---- */
+.layer-item {
+  margin-bottom: 6px;
+}
+
+.layer-item .layer {
+  margin-bottom: 0;
+}
+
+.layer-item:has(.export-row) .layer {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.layer-item .export-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  background: #f0f7ff;
+  border: 1px solid var(--ramboll-border);
+  border-top: none;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.export-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  color: var(--ramboll-grey);
+  flex: 0 0 auto;
+}
+
+.export-targets {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.export-btn {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border: 1px solid var(--ramboll-blue);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ramboll-blue);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  min-width: 28px;
+  text-align: center;
+}
+
+.export-btn:hover:not(:disabled) {
+  background: var(--ramboll-blue);
+  color: #fff;
+}
+
+.export-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.export-error {
+  font-size: 10px;
+  color: #b00020;
+  font-weight: 600;
+}
+
+.spinner-dark {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-top-color: var(--ramboll-blue);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: middle;
 }
 
 /* ---- Toasts / status ---- */

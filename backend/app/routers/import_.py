@@ -57,9 +57,9 @@ async def convert_import(file: UploadFile = File(...)) -> dict:
 
         # canonical == "glb"
         if fmt == "ifc":
-            glb = ifc.to_glb(original, workdir, stem)
+            glb, origin = ifc.to_glb(original, workdir, stem)
         else:
-            glb = mesh.to_glb(original, workdir, stem)
+            glb, origin = mesh.to_glb(original, workdir, stem)
         ds.canonical_path = glb
         store.put(ds)
         return {
@@ -67,9 +67,9 @@ async def convert_import(file: UploadFile = File(...)) -> dict:
             "layerName": stem,
             "canonical": "glb",
             "kind": kind,
-            "crs": None,
+            "crs": "EPSG:4326" if origin else None,
             "bbox": None,
-            "origin": None,
+            "origin": origin,
             "url": f"/api/files/{ds_id}",
         }
     except Exception as exc:  # noqa: BLE001 - surface conversion errors to client
