@@ -1,0 +1,7 @@
+{
+  "product": "AI Hackathon Environment",
+  "version": 1,
+  "environment": "AI-env",
+  "created_by": "AI Hackathon Environment",
+  "platform": "windows-wsl2"
+}
