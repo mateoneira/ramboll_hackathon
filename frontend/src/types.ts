@@ -44,4 +44,6 @@ export interface Layer {
   geojson?: FeatureCollection
   /** URL or object URL to a GLB for mesh/bim layers. */
   glbUrl?: string
+  /** Server-side store ID (present for backend-imported layers; enables export). */
+  backendId?: string
 }

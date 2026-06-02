@@ -1,19 +1,83 @@
 """CAD mesh conversions via trimesh (obj, dxf-3D, glb) with assimp for fbx.
 
-Import: obj/dxf/glb -> GLB (recentered to local origin).
+Import: obj/dxf/glb -> GLB grounded at origin, optionally georeferenced.
 Export: a cached mesh source -> glb / obj.
 """
 from __future__ import annotations
 
 from pathlib import Path
 
+import numpy as np
 import trimesh
+import trimesh.visual.material
+import trimesh.visual.texture
+from pyproj import Transformer
 
 from . import fbx
 
+# WGS84 bounding box for Denmark + near neighbours (used to validate reprojection).
+_DK_LAT = (54.0, 58.5)
+_DK_LON = (7.5, 16.0)
+
+# Building/terrain heights in Denmark are well within ±500 m.
+_MAX_HEIGHT = 500.0
+
+# Transformers for UTM zone 32N and 33N (both used in Danish projects).
+_T32 = Transformer.from_crs("EPSG:25832", "EPSG:4326", always_xy=True)
+_T33 = Transformer.from_crs("EPSG:25833", "EPSG:4326", always_xy=True)
+
+# Default PBR material: light architectural grey, no embedded texture.
+# Using PBRMaterial without a baseColorTexture is critical — trimesh's
+# default solid-colour-as-PNG visual suppresses vertex normals in the GLB
+# export, causing flat/black rendering in Cesium.
+_DEFAULT_MATERIAL = trimesh.visual.material.PBRMaterial(
+    baseColorFactor=np.array([0.82, 0.82, 0.82, 1.0]),
+    roughnessFactor=0.65,
+    metallicFactor=0.05,
+)
+
+
+def _centroid_origin(centre: np.ndarray) -> list[float] | None:
+    """Return [lon, lat, 0.0] if the centroid looks like Danish UTM, else None.
+
+    CityEngine OBJ exports use Y-up: X = Easting, Y = Elevation, Z = −Northing.
+    We check Y as height (must be ≤ 500 m) and try UTM 32N then 33N,
+    validating the result falls within the Denmark bounding box.
+    Height is always returned as 0.0 so the model sits on the Cesium ellipsoid.
+    """
+    x, y, z = float(centre[0]), float(centre[1]), float(centre[2])
+    easting, northing, height = x, -z, y
+
+    if abs(height) > _MAX_HEIGHT:
+        return None
+
+    for transformer in (_T32, _T33):
+        try:
+            lon, lat = transformer.transform(easting, northing)
+            if _DK_LAT[0] <= lat <= _DK_LAT[1] and _DK_LON[0] <= lon <= _DK_LON[1]:
+                return [lon, lat, 0.0]  # height=0: sit on ellipsoid (no terrain)
+        except Exception:  # noqa: BLE001
+            pass
+    return None
+
+
+def _prepare_geometry(scene: trimesh.Scene) -> None:
+    """For every Trimesh: compute vertex normals and apply a plain PBR material.
+
+    The plain PBR path (no baseColorTexture) is the only trimesh export path
+    that writes NORMAL attributes into the GLB — the texture-based path drops
+    them. This gives Cesium the data it needs for directional lighting.
+    """
+    for geom in scene.geometry.values():
+        if not isinstance(geom, trimesh.Trimesh) or len(geom.vertices) == 0:
+            continue
+        _ = geom.vertex_normals  # trigger computation and cache
+        geom.visual = trimesh.visual.texture.TextureVisuals(
+            material=_DEFAULT_MATERIAL
+        )
+
 
 def _load(path: Path) -> trimesh.Scene:
-    """Load a mesh/scene. FBX is delegated to assimp (trimesh can't read it)."""
     suffix = path.suffix.lower()
     if suffix == ".fbx":
         glb = fbx.fbx_to_glb(path, path.parent, path.stem)
@@ -25,21 +89,29 @@ def _load(path: Path) -> trimesh.Scene:
     return loaded
 
 
-def _recenter(scene: trimesh.Scene) -> trimesh.Scene:
-    """Translate the scene so its bounds centre sits at the origin."""
-    if scene.bounds is None:
-        return scene
-    centre = scene.bounds.mean(axis=0)
-    scene.apply_translation(-centre)
-    return scene
+def to_glb(path: Path, out_dir: Path, stem: str) -> tuple[Path, list[float] | None]:
+    """Convert an obj/dxf/glb/fbx to a grounded, lit GLB.
 
+    Placement:
+    - X and Z (horizontal) are centered at the bounds centroid.
+    - Y (vertical) is translated so the model floor sits at Y=0, matching
+      Cesium's ellipsoid surface when placed at height=0.
 
-def to_glb(path: Path, out_dir: Path, stem: str) -> Path:
-    """Convert an obj/dxf/glb (or fbx) to a recentered GLB."""
-    scene = _recenter(_load(path))
+    Returns (glb_path, origin) where origin is [lon, lat, 0.0] in WGS84 if
+    the source coordinates look like Danish UTM, otherwise None.
+    """
+    scene = _load(path)
+    origin: list[float] | None = None
+    if scene.bounds is not None:
+        centre = scene.bounds.mean(axis=0)
+        y_min = float(scene.bounds[0, 1])
+        origin = _centroid_origin(centre)
+        # Centre X/Z, ground Y so the floor is at Y=0.
+        scene.apply_translation([-centre[0], -y_min, -centre[2]])
+    _prepare_geometry(scene)
     out = out_dir / f"{stem}.glb"
     scene.export(out, file_type="glb")
-    return out
+    return out, origin
 
 
 def export(path: Path, target: str, out_dir: Path, stem: str) -> Path:
