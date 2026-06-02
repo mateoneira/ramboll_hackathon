@@ -30,7 +30,7 @@ export const FALLBACK_CONTACTS: ContactsFile = {
   },
   contacts: {
     'Geospatial & GIS': {
-      department: 'Geospatial & GIS',
+      department: 'Geospatial DK',
       name: 'Frederik Marthedal Christiansen',
       role: 'Head of Geospatial DK',
       email: 'frmc@ramboll.dk',
@@ -38,7 +38,7 @@ export const FALLBACK_CONTACTS: ContactsFile = {
       url: 'https://www.ramboll.com/contact-us',
     },
     'Buildings & BIM': {
-      department: 'Buildings & BIM',
+      department: 'Underground Structures',
       name: 'Jeppe Bæklund',
       role: 'Chief BIM Manager',
       email: 'jepb@ramboll.dk',
@@ -46,7 +46,7 @@ export const FALLBACK_CONTACTS: ContactsFile = {
       url: 'https://www.ramboll.com/services-and-sectors/buildings/project-services/digital-design-and-bim',
     },
     'GIS & 3D': {
-      department: 'GIS & 3D',
+      department: 'Geospatial DK',
       name: 'Giota Zachariadou',
       role: 'GIS and 3D Specialist',
       email: 'pza@ramboll.dk',

@@ -245,14 +245,14 @@ body,
 }
 
 .contact .person {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   margin: 2px 0;
 }
 
 .contact .role {
   font-size: 12px;
-  color: var(--ramboll-grey);
+  color: #000;
 }
 
 .contact a {
