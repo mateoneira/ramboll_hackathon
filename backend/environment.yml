@@ -26,7 +26,10 @@ dependencies:
   # CAD meshes
   - trimesh
   - pygltflib
-  - assimp
+  - assimp        # libassimp shared library (required by pyassimp)
+  - pip:
+    - pyassimp    # Python bindings for libassimp (FBX import/export)
+    - ezdxf       # DXF read/write (mesh export via 3DFACE entities)
   # contact scraper HTML parsing
   - beautifulsoup4
   - lxml

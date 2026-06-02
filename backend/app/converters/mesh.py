@@ -1,16 +1,18 @@
 """CAD mesh conversions via trimesh (obj, dxf-3D, glb) with assimp for fbx.
 
 Import: obj/dxf/glb -> GLB grounded at origin, optionally georeferenced.
-Export: a cached mesh source -> glb / obj.
+Export: a cached mesh source -> glb / obj / dxf.
 """
 from __future__ import annotations
 
 from pathlib import Path
 
+import ezdxf
 import numpy as np
 import trimesh
 import trimesh.visual.material
 import trimesh.visual.texture
+from ezdxf.math import Vec3
 from pyproj import Transformer
 
 from . import fbx
@@ -127,7 +129,34 @@ def export(path: Path, target: str, out_dir: Path, stem: str) -> Path:
     if target == "fbx":
         glb = _ensure_glb(scene, out_dir, stem)
         return fbx.glb_to_fbx(glb, out_dir, stem)
+    if target == "dxf":
+        return _export_dxf(scene, out_dir, stem)
     raise ValueError(f"Unsupported mesh export target: {target}")
+
+
+def _export_dxf(scene: trimesh.Scene, out_dir: Path, stem: str) -> Path:
+    """Write every triangle in the scene as a 3DFACE entity in a DXF file.
+
+    3DFACE is a planar quadrilateral — for triangles the 3rd and 4th vertices
+    are identical. This is the most universally compatible 3D mesh representation
+    in DXF (supported by AutoCAD R12+ and all common CAD tools).
+    """
+    doc = ezdxf.new("R2010")
+    msp = doc.modelspace()
+
+    for geom in scene.geometry.values():
+        if not isinstance(geom, trimesh.Trimesh) or len(geom.faces) == 0:
+            continue
+        verts = geom.vertices
+        for face in geom.faces:
+            v0 = Vec3(float(verts[face[0], 0]), float(verts[face[0], 1]), float(verts[face[0], 2]))
+            v1 = Vec3(float(verts[face[1], 0]), float(verts[face[1], 1]), float(verts[face[1], 2]))
+            v2 = Vec3(float(verts[face[2], 0]), float(verts[face[2], 1]), float(verts[face[2], 2]))
+            msp.add_3dface([v0, v1, v2, v2])
+
+    out = out_dir / f"{stem}.dxf"
+    doc.saveas(str(out))
+    return out
 
 
 def _ensure_glb(scene: trimesh.Scene, out_dir: Path, stem: str) -> Path:

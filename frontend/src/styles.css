@@ -372,3 +372,66 @@ body,
     transform: rotate(360deg);
   }
 }
+
+/* ---- Viewer toolbar (bbox + PDF export) ---- */
+.viewer-toolbar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.vtb-btn {
+  background: #fff;
+  border: 1px solid var(--ramboll-border);
+  border-radius: 4px;
+  padding: 7px 13px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ramboll-navy);
+  cursor: pointer;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.14);
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.vtb-btn:hover {
+  background: var(--ramboll-light);
+}
+
+.vtb-btn.vtb-active {
+  background: var(--ramboll-blue);
+  color: #fff;
+  border-color: var(--ramboll-blue);
+}
+
+.vtb-btn.vtb-primary {
+  background: var(--ramboll-navy);
+  color: #fff;
+  border-color: var(--ramboll-navy);
+}
+
+.vtb-btn.vtb-primary:hover {
+  background: var(--ramboll-blue);
+  border-color: var(--ramboll-blue);
+}
+
+.viewer-hint {
+  position: absolute;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 27, 69, 0.85);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+}

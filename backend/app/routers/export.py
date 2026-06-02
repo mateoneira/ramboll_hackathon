@@ -12,7 +12,7 @@ router = APIRouter()
 
 # Same-category capability matrix (enforced server-side too).
 VECTOR_TARGETS = {"geojson", "gpkg", "shp"}
-MESH_TARGETS = {"glb", "obj", "fbx"}
+MESH_TARGETS = {"glb", "obj", "fbx", "dxf"}
 
 
 class ExportRequest(BaseModel):

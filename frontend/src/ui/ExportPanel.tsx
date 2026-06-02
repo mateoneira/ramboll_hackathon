@@ -3,7 +3,7 @@ import { exportViaBackend } from '../api/client'
 import type { Layer } from '../types'
 
 const VECTOR_TARGETS = ['geojson', 'gpkg', 'shp'] as const
-const MESH_TARGETS = ['glb', 'obj', 'fbx'] as const
+const MESH_TARGETS = ['glb', 'obj', 'fbx', 'dxf'] as const
 
 const TARGET_LABELS: Record<string, string> = {
   geojson: 'GeoJSON',
@@ -12,6 +12,7 @@ const TARGET_LABELS: Record<string, string> = {
   glb: 'GLB',
   obj: 'OBJ',
   fbx: 'FBX',
+  dxf: 'DXF',
 }
 
 const TARGET_EXT: Record<string, string> = {
@@ -21,6 +22,7 @@ const TARGET_EXT: Record<string, string> = {
   glb: 'glb',
   obj: 'obj',
   fbx: 'fbx',
+  dxf: 'dxf',
 }
 
 function triggerDownload(blob: Blob, filename: string) {
