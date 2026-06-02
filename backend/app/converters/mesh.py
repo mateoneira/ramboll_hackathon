@@ -1,6 +1,6 @@
 """CAD mesh conversions via trimesh (obj, dxf-3D, glb) with assimp for fbx.
 
-Import: obj/dxf/glb -> GLB recentered to local origin, optionally georeferenced.
+Import: obj/dxf/glb -> GLB grounded at origin, optionally georeferenced.
 Export: a cached mesh source -> glb / obj.
 """
 from __future__ import annotations
@@ -9,6 +9,8 @@ from pathlib import Path
 
 import numpy as np
 import trimesh
+import trimesh.visual.material
+import trimesh.visual.texture
 from pyproj import Transformer
 
 from . import fbx
@@ -24,36 +26,55 @@ _MAX_HEIGHT = 500.0
 _T32 = Transformer.from_crs("EPSG:25832", "EPSG:4326", always_xy=True)
 _T33 = Transformer.from_crs("EPSG:25833", "EPSG:4326", always_xy=True)
 
+# Default PBR material: light architectural grey, no embedded texture.
+# Using PBRMaterial without a baseColorTexture is critical — trimesh's
+# default solid-colour-as-PNG visual suppresses vertex normals in the GLB
+# export, causing flat/black rendering in Cesium.
+_DEFAULT_MATERIAL = trimesh.visual.material.PBRMaterial(
+    baseColorFactor=np.array([0.82, 0.82, 0.82, 1.0]),
+    roughnessFactor=0.65,
+    metallicFactor=0.05,
+)
+
 
 def _centroid_origin(centre: np.ndarray) -> list[float] | None:
-    """Return [lon, lat, height] if the centroid looks like Danish UTM, else None.
+    """Return [lon, lat, 0.0] if the centroid looks like Danish UTM, else None.
 
-    CityEngine (and most GIS-aware CAD tools) export OBJ with Y-up, meaning:
-      X = Easting,  Y = Elevation (metres),  Z = −Northing
-    We detect this by checking height (Y) and trying both UTM 32N and 33N.
+    CityEngine OBJ exports use Y-up: X = Easting, Y = Elevation, Z = −Northing.
+    We check Y as height (must be ≤ 500 m) and try UTM 32N then 33N,
+    validating the result falls within the Denmark bounding box.
+    Height is always returned as 0.0 so the model sits on the Cesium ellipsoid.
     """
     x, y, z = float(centre[0]), float(centre[1]), float(centre[2])
-    easting, northing, height = x, -z, y  # Y-up: negate Z to recover northing
+    easting, northing, height = x, -z, y
 
     if abs(height) > _MAX_HEIGHT:
-        return None  # Y is not elevation — not a Y-up UTM file
+        return None
 
     for transformer in (_T32, _T33):
         try:
             lon, lat = transformer.transform(easting, northing)
             if _DK_LAT[0] <= lat <= _DK_LAT[1] and _DK_LON[0] <= lon <= _DK_LON[1]:
-                return [lon, lat, height]
+                return [lon, lat, 0.0]  # height=0: sit on ellipsoid (no terrain)
         except Exception:  # noqa: BLE001
             pass
     return None
 
 
-def _compute_vertex_normals(scene: trimesh.Scene) -> None:
-    """Ensure every Trimesh in the scene has vertex normals for smooth shading."""
+def _prepare_geometry(scene: trimesh.Scene) -> None:
+    """For every Trimesh: compute vertex normals and apply a plain PBR material.
+
+    The plain PBR path (no baseColorTexture) is the only trimesh export path
+    that writes NORMAL attributes into the GLB — the texture-based path drops
+    them. This gives Cesium the data it needs for directional lighting.
+    """
     for geom in scene.geometry.values():
-        if isinstance(geom, trimesh.Trimesh) and len(geom.vertices) > 0:
-            # Accessing .vertex_normals triggers computation and caches the result.
-            _ = geom.vertex_normals
+        if not isinstance(geom, trimesh.Trimesh) or len(geom.vertices) == 0:
+            continue
+        _ = geom.vertex_normals  # trigger computation and cache
+        geom.visual = trimesh.visual.texture.TextureVisuals(
+            material=_DEFAULT_MATERIAL
+        )
 
 
 def _load(path: Path) -> trimesh.Scene:
@@ -69,18 +90,25 @@ def _load(path: Path) -> trimesh.Scene:
 
 
 def to_glb(path: Path, out_dir: Path, stem: str) -> tuple[Path, list[float] | None]:
-    """Convert an obj/dxf/glb/fbx to a centered GLB.
+    """Convert an obj/dxf/glb/fbx to a grounded, lit GLB.
 
-    Returns (glb_path, origin) where origin is [lon, lat, height] in WGS84 if
-    the source coordinates look like UTM 32N (Denmark), otherwise None.
+    Placement:
+    - X and Z (horizontal) are centered at the bounds centroid.
+    - Y (vertical) is translated so the model floor sits at Y=0, matching
+      Cesium's ellipsoid surface when placed at height=0.
+
+    Returns (glb_path, origin) where origin is [lon, lat, 0.0] in WGS84 if
+    the source coordinates look like Danish UTM, otherwise None.
     """
     scene = _load(path)
     origin: list[float] | None = None
     if scene.bounds is not None:
         centre = scene.bounds.mean(axis=0)
+        y_min = float(scene.bounds[0, 1])
         origin = _centroid_origin(centre)
-        scene.apply_translation(-centre)
-    _compute_vertex_normals(scene)
+        # Centre X/Z, ground Y so the floor is at Y=0.
+        scene.apply_translation([-centre[0], -y_min, -centre[2]])
+    _prepare_geometry(scene)
     out = out_dir / f"{stem}.glb"
     scene.export(out, file_type="glb")
     return out, origin
