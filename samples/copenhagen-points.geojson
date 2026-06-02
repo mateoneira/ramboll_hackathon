@@ -1,0 +1,43 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Ramboll HQ", "city": "Copenhagen" },
+      "geometry": { "type": "Point", "coordinates": [12.5683, 55.6761] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Nyhavn" },
+      "geometry": { "type": "Point", "coordinates": [12.5912, 55.6799] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Harbour route" },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [12.59, 55.68],
+          [12.61, 55.69],
+          [12.63, 55.70]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "District" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [12.55, 55.67],
+            [12.58, 55.67],
+            [12.58, 55.69],
+            [12.55, 55.69],
+            [12.55, 55.67]
+          ]
+        ]
+      }
+    }
+  ]
+}

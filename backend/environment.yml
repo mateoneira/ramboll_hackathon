@@ -1,0 +1,32 @@
+# Conda-forge env spec for the Ramboll Data Viewer backend.
+# Install into the managed AI-env:
+#   micromamba install -n AI-env -c conda-forge --file backend/environment.yml
+# (or recreate: micromamba create -n AI-env -f backend/environment.yml)
+#
+# GDAL/PROJ MUST come from conda-forge, never pip, so the native stack resolves.
+name: AI-env
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.11
+  # web
+  - fastapi
+  - uvicorn
+  - python-multipart
+  - orjson
+  - httpx
+  # geospatial (vector import/export + reprojection)
+  - gdal
+  - geopandas>=1.0
+  - pyogrio
+  - shapely
+  - pyproj
+  # BIM
+  - ifcopenshell
+  # CAD meshes
+  - trimesh
+  - pygltflib
+  - assimp
+  # contact scraper HTML parsing
+  - beautifulsoup4
+  - lxml

@@ -1,0 +1,30 @@
+{
+  "categoryToDepartment": {
+    "vector": "Geospatial & GIS",
+    "mesh": "Surveying & Digital Engineering",
+    "bim": "Buildings & BIM"
+  },
+  "contacts": {
+    "Geospatial & GIS": {
+      "department": "Geospatial & GIS",
+      "name": "Ramboll GIS Team",
+      "role": "Geospatial data specialists",
+      "email": "gis@ramboll.com",
+      "url": "https://www.ramboll.com/services/data-and-digital-solutions"
+    },
+    "Surveying & Digital Engineering": {
+      "department": "Surveying & Digital Engineering",
+      "name": "Ramboll Survey Team",
+      "role": "CAD & reality-capture specialists",
+      "email": "survey@ramboll.com",
+      "url": "https://www.ramboll.com/services/data-and-digital-solutions"
+    },
+    "Buildings & BIM": {
+      "department": "Buildings & BIM",
+      "name": "Ramboll BIM Team",
+      "role": "Building information modelling specialists",
+      "email": "bim@ramboll.com",
+      "url": "https://www.ramboll.com/buildings"
+    }
+  }
+}
