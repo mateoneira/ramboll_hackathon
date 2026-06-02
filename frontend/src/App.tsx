@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import Map2D from './viewer/Map2D'
 import Viewer3D from './viewer/Viewer3D'
 import DropZone from './ui/DropZone'
 import LayerList from './ui/LayerList'
@@ -10,8 +9,6 @@ import { useLayers } from './store/layers'
 export default function App() {
   const mode = useMemo(() => getMode(), [])
   const layers = useLayers((s) => s.layers)
-  const viewer = useLayers((s) => s.viewer)
-  const setViewer = useLayers((s) => s.setViewer)
 
   const loading = layers.some((l) => l.status === 'loading')
   const lastError = [...layers].reverse().find((l) => l.status === 'error')
@@ -25,20 +22,6 @@ export default function App() {
           alt="Ramboll"
         />
         <span className="title">Data Viewer — import · view · export</span>
-        <div className="viewer-toggle">
-          <button
-            className={viewer === '2d' ? 'active' : ''}
-            onClick={() => setViewer('2d')}
-          >
-            2D
-          </button>
-          <button
-            className={viewer === '3d' ? 'active' : ''}
-            onClick={() => setViewer('3d')}
-          >
-            3D
-          </button>
-        </div>
         <span className="mode-badge">{mode}</span>
       </header>
 
@@ -59,7 +42,7 @@ export default function App() {
         </aside>
 
         <div className="viewer-wrap">
-          {viewer === '2d' ? <Map2D /> : <Viewer3D />}
+          <Viewer3D />
           {loading && (
             <div className="toast">
               <span className="spinner" /> &nbsp;Loading data…

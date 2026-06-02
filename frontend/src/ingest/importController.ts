@@ -43,7 +43,6 @@ export async function importFile(file: File): Promise<void> {
   })
 
   try {
-    let isGlb = false
     if (route === 'client') {
       const result =
         format === 'geojson' ? await parseGeoJson(file) : await parseGlb(file)
@@ -53,7 +52,6 @@ export async function importFile(file: File): Promise<void> {
         geojson: result.geojson,
         glbUrl: result.glbUrl,
       })
-      isGlb = !!result.glbUrl
     } else {
       const env = await importViaBackend(file)
       store.updateLayer(id, {
@@ -64,10 +62,8 @@ export async function importFile(file: File): Promise<void> {
         glbUrl: env.url,
         backendId: env.id,
       })
-      isGlb = !!env.url
     }
 
-    if (isGlb) useLayers.getState().setViewer('3d')
     useLayers.getState().requestFit(id)
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err)

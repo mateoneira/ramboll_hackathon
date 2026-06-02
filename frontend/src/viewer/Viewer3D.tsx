@@ -4,6 +4,7 @@ import 'cesium/Build/Cesium/Widgets/widgets.css'
 import { useLayers } from '../store/layers'
 import type { Layer } from '../types'
 import { syncGlbLayers } from './addGlb'
+import { syncGeoJsonCesiumLayers } from './addGeoJsonCesium'
 
 Cesium.Ion.defaultAccessToken = ''
 
@@ -32,7 +33,8 @@ function makeViewer(container: HTMLDivElement): Cesium.Viewer {
 export default function Viewer3D() {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const viewerRef = useRef<Cesium.Viewer | null>(null)
-  const cacheRef = useRef<Map<string, Cesium.Model>>(new Map())
+  const glbCacheRef = useRef<Map<string, Cesium.Model>>(new Map())
+  const geoJsonCacheRef = useRef<Map<string, Cesium.GeoJsonDataSource>>(new Map())
 
   const layers = useLayers((s) => s.layers)
   const fitRequest = useLayers((s) => s.fitRequest)
@@ -47,8 +49,7 @@ export default function Viewer3D() {
 
     // Directional light tuned for Denmark (lat ~56°N).
     // Direction is the ECEF vector light rays travel (sun → scene).
-    // Computed for 45° elevation from SSW: illuminates rooftops and one wall face,
-    // giving strong depth cues without washing out the model.
+    // Computed for 45° elevation from SSW: illuminates rooftops and one wall face.
     viewer.scene.light = new Cesium.DirectionalLight({
       direction: Cesium.Cartesian3.normalize(
         new Cesium.Cartesian3(-0.9, 0.31, -0.30),
@@ -58,19 +59,22 @@ export default function Viewer3D() {
     })
 
     viewerRef.current = viewer
-    // Sync any layers already in the store when the viewer first mounts.
-    syncGlbLayers(viewer, useLayers.getState().layers, cacheRef.current)
+    const initialLayers = useLayers.getState().layers
+    syncGlbLayers(viewer, initialLayers, glbCacheRef.current)
+    syncGeoJsonCesiumLayers(viewer, initialLayers, geoJsonCacheRef.current)
     return () => {
       viewer.destroy()
       viewerRef.current = null
-      cacheRef.current.clear()
+      glbCacheRef.current.clear()
+      geoJsonCacheRef.current.clear()
     }
   }, [])
 
   useEffect(() => {
     const viewer = viewerRef.current
     if (!viewer) return
-    syncGlbLayers(viewer, layers, cacheRef.current)
+    syncGlbLayers(viewer, layers, glbCacheRef.current)
+    syncGeoJsonCesiumLayers(viewer, layers, geoJsonCacheRef.current)
   }, [layers])
 
   useEffect(() => {
@@ -78,16 +82,24 @@ export default function Viewer3D() {
     if (!viewer || !fitRequest) return
     const layer = layers.find((l: Layer) => l.id === fitRequest)
     if (layer) {
-      const [lon, lat, h] = layer.meta.origin ?? [12.5683, 55.6761, 0]
-      viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(lon, lat, h + 500),
-        orientation: {
-          heading: 0,
-          pitch: Cesium.Math.toRadians(-45),
-          roll: 0,
-        },
-        duration: 1.5,
-      })
+      if (layer.meta.canonical === 'geojson' && layer.meta.bbox) {
+        const [minX, minY, maxX, maxY] = layer.meta.bbox
+        viewer.camera.flyTo({
+          destination: Cesium.Rectangle.fromDegrees(minX, minY, maxX, maxY),
+          duration: 1.5,
+        })
+      } else {
+        const [lon, lat, h] = layer.meta.origin ?? [12.5683, 55.6761, 0]
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, h + 500),
+          orientation: {
+            heading: 0,
+            pitch: Cesium.Math.toRadians(-45),
+            roll: 0,
+          },
+          duration: 1.5,
+        })
+      }
     }
     clearFit()
   }, [fitRequest, layers, clearFit])
