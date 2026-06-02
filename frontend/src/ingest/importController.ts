@@ -62,6 +62,7 @@ export async function importFile(file: File): Promise<void> {
         meta: metaFromEnvelope(env),
         geojson: env.geojson,
         glbUrl: env.url,
+        backendId: env.id,
       })
       isGlb = !!env.url
     }

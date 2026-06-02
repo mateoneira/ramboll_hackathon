@@ -1,5 +1,6 @@
 import { useLayers } from '../store/layers'
 import type { Layer } from '../types'
+import ExportPanel from './ExportPanel'
 
 export default function LayerList() {
   const layers = useLayers((s) => s.layers)
@@ -14,27 +15,30 @@ export default function LayerList() {
   return (
     <div>
       {layers.map((layer: Layer) => (
-        <div className="layer" key={layer.id}>
-          <span className="swatch" style={{ background: layer.color }} />
-          <span
-            className="name"
-            title={layer.name}
-            onClick={() => requestFit(layer.id)}
-            style={{ cursor: 'pointer' }}
-          >
-            {layer.name}
-          </span>
-          <span className="kind">{statusLabel(layer)}</span>
-          <button
-            className="icon-btn"
-            title={layer.visible ? 'Hide' : 'Show'}
-            onClick={() => toggleVisible(layer.id)}
-          >
-            {layer.visible ? '👁' : '🚫'}
-          </button>
-          <button title="Remove" onClick={() => removeLayer(layer.id)}>
-            ✕
-          </button>
+        <div className="layer-item" key={layer.id}>
+          <div className="layer">
+            <span className="swatch" style={{ background: layer.color }} />
+            <span
+              className="name"
+              title={layer.name}
+              onClick={() => requestFit(layer.id)}
+              style={{ cursor: 'pointer' }}
+            >
+              {layer.name}
+            </span>
+            <span className="kind">{statusLabel(layer)}</span>
+            <button
+              className="icon-btn"
+              title={layer.visible ? 'Hide' : 'Show'}
+              onClick={() => toggleVisible(layer.id)}
+            >
+              {layer.visible ? '👁' : '🚫'}
+            </button>
+            <button title="Remove" onClick={() => removeLayer(layer.id)}>
+              ✕
+            </button>
+          </div>
+          <ExportPanel layer={layer} />
         </div>
       ))}
     </div>
