@@ -59,13 +59,40 @@ body,
   padding-left: 18px;
 }
 
+.viewer-toggle {
+  display: flex;
+  border: 1px solid var(--ramboll-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.viewer-toggle button {
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fff;
+  color: var(--ramboll-grey);
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+}
+
+.viewer-toggle button + button {
+  border-left: 1px solid var(--ramboll-border);
+}
+
+.viewer-toggle button.active {
+  background: var(--ramboll-blue);
+  color: #fff;
+}
+
 .app-header .mode-badge {
   margin-left: auto;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: 600;
-  background: var(--ramboll-blue);
+  background: var(--ramboll-navy);
   color: #fff;
   padding: 4px 12px;
   border-radius: 3px;
