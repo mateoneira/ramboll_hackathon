@@ -1,0 +1,833 @@
+Export time: 2026/01/16 14:35:45 CET
+Export duration: 4.112s
+
+Export settings:
+	Export Geometry: Models with Shape Fallback
+	Output Path: C:\Users\pza\Documents\CityEngine\Default Workspace\3D_modelling_buildings\models\Soro
+	Simplify Terrain Meshes: true
+	Terrain Layers: Do not export any terrain layers
+	Terrain Mesh Resolution: [ 1024, 1024 ]
+	applicationName: CityEngine
+	applicationString: CityEngine 2025.1.11669 1031R
+	applicationVendor: Esri R&D Center Zurich Inc.
+	applicationVersion: 2025.1.11669 10311511
+	atlasAddWrapBorder: true
+	author: PZA
+	baseName: 
+	collectTextures: false
+	createTextureAtlases: false
+	encoderID: com.esri.prt.codecs.OBJEncoder
+	encoderName: Wavefront OBJ
+	errorFallback: true
+	existingFiles: OVERWRITE
+	facesWithHoles: TRIANGULATE_FACES_WITH_HOLES
+	fileGranularity: START_SHAPE
+	globalOffset: [ 0.0, 0.0, 0.0 ]
+	includeMaterials: false
+	localOffset: NONE
+	maxAtlasDim: 11
+	memoryBudget: 500
+	mergeNormals: true
+	mergeTexcoords: true
+	mergeVertices: true
+	meshGranularity: AS_GENERATED
+	normalPrecision: 0.001
+	sceneFile: /3D_modelling_buildings/scenes/troubleshoot_Sebastian.cej
+	script: /3D_modelling_buildings/scripts/exportfbx.py
+	shapeNameDelimiter: _
+	texcoordPrecision: 1.0E-4
+	textureCoordinates: FIRST
+	triangulateMeshes: false
+	vertexNormals: PASS
+	vertexPrecision: 0.001
+	writeLog: true
+
+Initial shapes:
+	 0 :   OK                'Abildvej 1'                        OID '382fe210-3675-11b2-b947-002e0bbcacae'
+	 1 :   OK                'Alleen 8'                          OID '3888eb6c-3675-11b2-b947-002e0bbcacae'
+	 2 :   OK                'Banevænget 8'                      OID '38e52d00-3675-11b2-b947-002e0bbcacae'
+	 3 :   OK                'Dr. Kaarsbergsvej 2'               OID '394ac1b0-3675-11b2-b947-002e0bbcacae'
+	 4 :   OK                'Dr. Kaarsbergsvej 3'               OID '39b81aa8-3675-11b2-b947-002e0bbcacae'
+	 5 :   OK                'Dr. Kaarsbergsvej 4'               OID '3a5b2f7c-3675-11b2-b947-002e0bbcacae'
+	 6 :   OK                'Dr. Kaarsbergsvej 5'               OID '3ad0a0b8-3675-11b2-b947-002e0bbcacae'
+	 7 :   OK                'Dr. Kaarsbergsvej 6'               OID '3b6156d0-3675-11b2-b947-002e0bbcacae'
+	 8 :   OK                'Dr. Kaarsbergsvej 7'               OID '3bef4a44-3675-11b2-b947-002e0bbcacae'
+	 9 :   OK                'Dr. Kaarsbergsvej 9'               OID '3c71b114-3675-11b2-b947-002e0bbcacae'
+	10 :   OK                'Fjenneslevmaglevej 23'             OID '3cde3848-3675-11b2-b947-002e0bbcacae'
+	11 :   OK                'Frederiksvej 33'                   OID '3d7df540-3675-11b2-b947-002e0bbcacae'
+	12 :   OK                'Havebo 7'                          OID '3dda1f00-3675-11b2-b947-002e0bbcacae'
+	13 :   OK                'Holbergsvej 18'                    OID '3e555ef4-3675-11b2-b947-002e0bbcacae'
+	14 :   OK                'Holbergsvej 21'                    OID '3ebe6868-3675-11b2-b947-002e0bbcacae'
+	15 :   OK                'Holbergsvej 23'                    OID '3f1af240-3675-11b2-b947-002e0bbcacae'
+	16 :   OK                'Holbergsvej 25'                    OID '3f798f58-3675-11b2-b947-002e0bbcacae'
+	17 :   OK                'Holbergsvej 40'                    OID '3fd806f0-3675-11b2-b947-002e0bbcacae'
+	18 :   OK                'Holbergsvej 42'                    OID '404b4ea8-3675-11b2-b947-002e0bbcacae'
+	19 :   OK                'Holbergsvej 63'                    OID '40a7e17c-3675-11b2-b947-002e0bbcacae'
+	20 :   OK                'Hovedgaden 1'                      OID '412caec0-3675-11b2-b947-002e0bbcacae'
+	21 :   OK                'Hovedgaden 3'                      OID '41a9a04c-3675-11b2-b947-002e0bbcacae'
+	22 :   OK                'Hovedgaden 37'                     OID '421f0828-3675-11b2-b947-002e0bbcacae'
+	23 :   OK                'Idrætsvej 1'                       OID '427a66c8-3675-11b2-b947-002e0bbcacae'
+	24 :   OK                'Idrætsvej 4'                       OID '42dfa8a8-3675-11b2-b947-002e0bbcacae'
+	25 :   OK                'Industrivej 10'                    OID '4354f1a8-3675-11b2-b947-002e0bbcacae'
+	26 :   OK                'Katrinelystvej 11A'                OID '43b7b5a4-3675-11b2-b947-002e0bbcacae'
+	27 :   OK                'Katrinelystvej 11C'                OID '443eadfc-3675-11b2-b947-002e0bbcacae'
+	28 :   OK                'Kongebrovej 7'                     OID '449b2384-3675-11b2-b947-002e0bbcacae'
+	29 :   OK                'Kongevejen 7'                      OID '452a13b4-3675-11b2-b947-002e0bbcacae'
+	30 :   OK                'Kongstedvej 20'                    OID '4583aec4-3675-11b2-b947-002e0bbcacae'
+	31 :   OK                'Kongstedvej 26'                    OID '45dfd94c-3675-11b2-b947-002e0bbcacae'
+	32 :   OK                'Krongårdsvej 2'                    OID '4641c4e0-3675-11b2-b947-002e0bbcacae'
+	33 :   OK                'Lundtoftevej 35'                   OID '46a10f04-3675-11b2-b947-002e0bbcacae'
+	34 :   OK                'Lynge Byvej 54'                    OID '471767e4-3675-11b2-b947-002e0bbcacae'
+	35 :   OK                'Margrethevej 1'                    OID '4775401c-3675-11b2-b947-002e0bbcacae'
+	36 :   OK                'Omkørselsvejen 2'                  OID '47d1ff78-3675-11b2-b947-002e0bbcacae'
+	37 :   OK                'Pilevænget 1'                      OID '48510250-3675-11b2-b947-002e0bbcacae'
+	38 :   OK                'Ringstedvej 129'                   OID '48b00f84-3675-11b2-b947-002e0bbcacae'
+	39 :   OK                'Ringstedvej 18'                    OID '49124104-3675-11b2-b947-002e0bbcacae'
+	40 :   OK                'Rosenvænget 4'                     OID '4977533c-3675-11b2-b947-002e0bbcacae'
+	41 :   OK                'Rustkammervej 76'                  OID '49dac958-3675-11b2-b947-002e0bbcacae'
+	42 :   OK                'Rådhusvej 10'                      OID '4a39ae50-3675-11b2-b947-002e0bbcacae'
+	43 :   OK                'Rådhusvej 13'                      OID '4ab784c4-3675-11b2-b947-002e0bbcacae'
+	44 :   OK                'Rådhusvej 15'                      OID '4b36b0a0-3675-11b2-b947-002e0bbcacae'
+	45 :   OK                'Rådhusvej 6'                       OID '4bad9c60-3675-11b2-b947-002e0bbcacae'
+	46 :   OK                'Rådhusvej 8'                       OID '4c2133c8-3675-11b2-b947-002e0bbcacae'
+	47 :   OK                'Skolegade 15'                      OID '4c901e50-3675-11b2-b947-002e0bbcacae'
+	48 :   OK                'Skolegade 19'                      OID '4cef8304-3675-11b2-b947-002e0bbcacae'
+	49 :   OK                'Skolegade 20'                      OID '4d71b9c8-3675-11b2-b947-002e0bbcacae'
+	50 :   OK                'Skolevej 1A'                       OID '4dd54560-3675-11b2-b947-002e0bbcacae'
+	51 :   OK                'Skolevej 1B'                       OID '4e3742ec-3675-11b2-b947-002e0bbcacae'
+	52 :   OK                'Skolevej 3'                        OID '4e929c78-3675-11b2-b947-002e0bbcacae'
+	53 :   OK                'Skovglimt 2'                       OID '4f17b840-3675-11b2-b947-002e0bbcacae'
+	54 :   OK                'Smedeparken 3'                     OID '4f8f6f84-3675-11b2-b947-002e0bbcacae'
+	55 :   OK                'Sneppevej 4'                       OID '500fdf34-3675-11b2-b947-002e0bbcacae'
+	56 :   OK                'Sportsvej 15'                      OID '5073b11c-3675-11b2-b947-002e0bbcacae'
+	57 :   OK                'Storgade 7A'                       OID '50c6a318-3675-11b2-b947-002e0bbcacae'
+	58 :   OK                'Storgade 7C'                       OID '51151db8-3675-11b2-b947-002e0bbcacae'
+	59 :   OK                'Søholm 1'                          OID '515fc7c8-3675-11b2-b947-002e0bbcacae'
+	60 :   OK                'Sømosevej 44'                      OID '51ab33fc-3675-11b2-b947-002e0bbcacae'
+	61 :   OK                'Sømosevej 46'                      OID '51f68730-3675-11b2-b947-002e0bbcacae'
+	62 :   OK                'Sømosevej 48'                      OID '524d0a10-3675-11b2-b947-002e0bbcacae'
+	63 :   OK                'Sømosevej 50'                      OID '5297e238-3675-11b2-b947-002e0bbcacae'
+	64 :   OK                'Søparken 1'                        OID '52e38af8-3675-11b2-b947-002e0bbcacae'
+	65 :   OK                'unnamed'                           OID '534029e8-3675-11b2-b947-002e0bbcacae'
+	66 :   OK                'unnamed'                           OID '53528200-3675-11b2-b947-002e0bbcacae'
+	67 :   OK                'unnamed'                           OID '536b8cf0-3675-11b2-b947-002e0bbcacae'
+	68 :   OK                'unnamed'                           OID '5380ce58-3675-11b2-b947-002e0bbcacae'
+	69 :   OK                'Thyrasvej 45'                      OID '53cb22dc-3675-11b2-b947-002e0bbcacae'
+	70 :   OK                'Thyrasvej 47'                      OID '541e0600-3675-11b2-b947-002e0bbcacae'
+	71 :   OK                'Tokesvej 1'                        OID '547d5bdc-3675-11b2-b947-002e0bbcacae'
+	72 :   OK                'Veddevej 19A'                      OID '54d0aa6c-3675-11b2-b947-002e0bbcacae'
+	73 :   OK                'Ventemøllevej 11'                  OID '551e5028-3675-11b2-b947-002e0bbcacae'
+	74 :   OK                'Ventemøllevej 30'                  OID '55798f88-3675-11b2-b947-002e0bbcacae'
+	75 :   OK                'Ventemøllevej 32A'                 OID '55d5d9b4-3675-11b2-b947-002e0bbcacae'
+	76 :   OK                'Ventemøllevej 32B'                 OID '5637859c-3675-11b2-b947-002e0bbcacae'
+	77 :   OK                'Vibevej 7A'                        OID '5696205c-3675-11b2-b947-002e0bbcacae'
+
+Assets with errors/warnings/infos:
+	<initial shape geometry>:
+		Warning: Geometry ' (mesh: Kongstedvej 20)' contained: 2 0-length edges (removed); ; Geometry '' contained (0/0/1) unreferenced vertices/vertex normals/texture coordinates, they were removed.; 
+		Warning: Geometry ' (mesh: Sømosevej 50)' contained: 1 0-angles (removed); ; Geometry '' contained (0/0/1) unreferenced vertices/vertex normals/texture coordinates, they were removed.; 
+
+
+Files created:
+	'_Abildvej 1.obj':
+		Initial shapes:
+			0, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 85
+			  | Name       | Material | Polygons 
+			==+============+==========+==========
+			1  'Abildvej_1' ''                85 
+	'_Alleen 8.obj':
+		Initial shapes:
+			1, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 73
+			  | Name     | Material | Polygons 
+			==+==========+==========+==========
+			1  'Alleen_8' ''                73 
+	'_Banevænget 8.obj':
+		Initial shapes:
+			2, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 17
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Banevænget_8' ''                17 
+	'_Dr. Kaarsbergsvej 2.obj':
+		Initial shapes:
+			3, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 49
+			  | Name                | Material | Polygons 
+			==+=====================+==========+==========
+			1  'Dr._Kaarsbergsvej_2' ''                49 
+	'_Dr. Kaarsbergsvej 3.obj':
+		Initial shapes:
+			4, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 167
+			  | Name                | Material | Polygons 
+			==+=====================+==========+==========
+			1  'Dr._Kaarsbergsvej_3' ''               167 
+	'_Dr. Kaarsbergsvej 4.obj':
+		Initial shapes:
+			5, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 772
+			  | Name                | Material | Polygons 
+			==+=====================+==========+==========
+			1  'Dr._Kaarsbergsvej_4' ''               772 
+	'_Dr. Kaarsbergsvej 5.obj':
+		Initial shapes:
+			6, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 197
+			  | Name                | Material | Polygons 
+			==+=====================+==========+==========
+			1  'Dr._Kaarsbergsvej_5' ''               197 
+	'_Dr. Kaarsbergsvej 6.obj':
+		Initial shapes:
+			7, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 500
+			  | Name                | Material | Polygons 
+			==+=====================+==========+==========
+			1  'Dr._Kaarsbergsvej_6' ''               500 
+	'_Dr. Kaarsbergsvej 7.obj':
+		Initial shapes:
+			8, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 850
+			  | Name                | Material | Polygons 
+			==+=====================+==========+==========
+			1  'Dr._Kaarsbergsvej_7' ''               850 
+	'_Dr. Kaarsbergsvej 9.obj':
+		Initial shapes:
+			9, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 46
+			  | Name                | Material | Polygons 
+			==+=====================+==========+==========
+			1  'Dr._Kaarsbergsvej_9' ''                46 
+	'_Fjenneslevmaglevej 23.obj':
+		Initial shapes:
+			10, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 55
+			  | Name                  | Material | Polygons 
+			==+=======================+==========+==========
+			1  'Fjenneslevmaglevej_23' ''                55 
+	'_Frederiksvej 33.obj':
+		Initial shapes:
+			11, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 154
+			  | Name            | Material | Polygons 
+			==+=================+==========+==========
+			1  'Frederiksvej_33' ''               154 
+	'_Havebo 7.obj':
+		Initial shapes:
+			12, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 49
+			  | Name     | Material | Polygons 
+			==+==========+==========+==========
+			1  'Havebo_7' ''                49 
+	'_Holbergsvej 18.obj':
+		Initial shapes:
+			13, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 284
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Holbergsvej_18' ''               284 
+	'_Holbergsvej 21.obj':
+		Initial shapes:
+			14, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 146
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Holbergsvej_21' ''               146 
+	'_Holbergsvej 23.obj':
+		Initial shapes:
+			15, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 138
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Holbergsvej_23' ''               138 
+	'_Holbergsvej 25.obj':
+		Initial shapes:
+			16, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 148
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Holbergsvej_25' ''               148 
+	'_Holbergsvej 40.obj':
+		Initial shapes:
+			17, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 86
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Holbergsvej_40' ''                86 
+	'_Holbergsvej 42.obj':
+		Initial shapes:
+			18, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 85
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Holbergsvej_42' ''                85 
+	'_Holbergsvej 63.obj':
+		Initial shapes:
+			19, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 37
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Holbergsvej_63' ''                37 
+	'_Hovedgaden 1.obj':
+		Initial shapes:
+			20, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 18
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Hovedgaden_1' ''                18 
+	'_Hovedgaden 3.obj':
+		Initial shapes:
+			21, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 450
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Hovedgaden_3' ''               450 
+	'_Hovedgaden 37.obj':
+		Initial shapes:
+			22, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 106
+			  | Name          | Material | Polygons 
+			==+===============+==========+==========
+			1  'Hovedgaden_37' ''               106 
+	'_Idrætsvej 1.obj':
+		Initial shapes:
+			23, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 124
+			  | Name        | Material | Polygons 
+			==+=============+==========+==========
+			1  'Idrætsvej_1' ''               124 
+	'_Idrætsvej 4.obj':
+		Initial shapes:
+			24, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 206
+			  | Name        | Material | Polygons 
+			==+=============+==========+==========
+			1  'Idrætsvej_4' ''               206 
+	'_Industrivej 10.obj':
+		Initial shapes:
+			25, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 18
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Industrivej_10' ''                18 
+	'_Katrinelystvej 11A.obj':
+		Initial shapes:
+			26, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 58
+			  | Name               | Material | Polygons 
+			==+====================+==========+==========
+			1  'Katrinelystvej_11A' ''                58 
+	'_Katrinelystvej 11C.obj':
+		Initial shapes:
+			27, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 80
+			  | Name               | Material | Polygons 
+			==+====================+==========+==========
+			1  'Katrinelystvej_11C' ''                80 
+	'_Kongebrovej 7.obj':
+		Initial shapes:
+			28, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 193
+			  | Name          | Material | Polygons 
+			==+===============+==========+==========
+			1  'Kongebrovej_7' ''               193 
+	'_Kongevejen 7.obj':
+		Initial shapes:
+			29, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 123
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Kongevejen_7' ''               123 
+	'_Kongstedvej 20.obj':
+		Initial shapes:
+			30, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 52
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Kongstedvej_20' ''                52 
+	'_Kongstedvej 26.obj':
+		Initial shapes:
+			31, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 134
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Kongstedvej_26' ''               134 
+	'_Krongårdsvej 2.obj':
+		Initial shapes:
+			32, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 147
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Krongårdsvej_2' ''               147 
+	'_Lundtoftevej 35.obj':
+		Initial shapes:
+			33, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 18
+			  | Name            | Material | Polygons 
+			==+=================+==========+==========
+			1  'Lundtoftevej_35' ''                18 
+	'_Lynge Byvej 54.obj':
+		Initial shapes:
+			34, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 286
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Lynge_Byvej_54' ''               286 
+	'_Margrethevej 1.obj':
+		Initial shapes:
+			35, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 150
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Margrethevej_1' ''               150 
+	'_Omkørselsvejen 2.obj':
+		Initial shapes:
+			36, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 102
+			  | Name             | Material | Polygons 
+			==+==================+==========+==========
+			1  'Omkørselsvejen_2' ''               102 
+	'_Pilevænget 1.obj':
+		Initial shapes:
+			37, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 150
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Pilevænget_1' ''               150 
+	'_Ringstedvej 129.obj':
+		Initial shapes:
+			38, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 651
+			  | Name            | Material | Polygons 
+			==+=================+==========+==========
+			1  'Ringstedvej_129' ''               651 
+	'_Ringstedvej 18.obj':
+		Initial shapes:
+			39, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 112
+			  | Name           | Material | Polygons 
+			==+================+==========+==========
+			1  'Ringstedvej_18' ''               112 
+	'_Rosenvænget 4.obj':
+		Initial shapes:
+			40, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 65
+			  | Name          | Material | Polygons 
+			==+===============+==========+==========
+			1  'Rosenvænget_4' ''                65 
+	'_Rustkammervej 76.obj':
+		Initial shapes:
+			41, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 207
+			  | Name             | Material | Polygons 
+			==+==================+==========+==========
+			1  'Rustkammervej_76' ''               207 
+	'_Rådhusvej 10.obj':
+		Initial shapes:
+			42, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 17
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Rådhusvej_10' ''                17 
+	'_Rådhusvej 13.obj':
+		Initial shapes:
+			43, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 37
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Rådhusvej_13' ''                37 
+	'_Rådhusvej 15.obj':
+		Initial shapes:
+			44, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 25
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Rådhusvej_15' ''                25 
+	'_Rådhusvej 6.obj':
+		Initial shapes:
+			45, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 258
+			  | Name        | Material | Polygons 
+			==+=============+==========+==========
+			1  'Rådhusvej_6' ''               258 
+	'_Rådhusvej 8.obj':
+		Initial shapes:
+			46, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 626
+			  | Name        | Material | Polygons 
+			==+=============+==========+==========
+			1  'Rådhusvej_8' ''               626 
+	'_Skolegade 15.obj':
+		Initial shapes:
+			47, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 46
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Skolegade_15' ''                46 
+	'_Skolegade 19.obj':
+		Initial shapes:
+			48, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 311
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Skolegade_19' ''               311 
+	'_Skolegade 20.obj':
+		Initial shapes:
+			49, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 33
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Skolegade_20' ''                33 
+	'_Skolevej 1A.obj':
+		Initial shapes:
+			50, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 69
+			  | Name        | Material | Polygons 
+			==+=============+==========+==========
+			1  'Skolevej_1A' ''                69 
+	'_Skolevej 1B.obj':
+		Initial shapes:
+			51, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 119
+			  | Name        | Material | Polygons 
+			==+=============+==========+==========
+			1  'Skolevej_1B' ''               119 
+	'_Skolevej 3.obj':
+		Initial shapes:
+			52, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 101
+			  | Name       | Material | Polygons 
+			==+============+==========+==========
+			1  'Skolevej_3' ''               101 
+	'_Skovglimt 2.obj':
+		Initial shapes:
+			53, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 495
+			  | Name        | Material | Polygons 
+			==+=============+==========+==========
+			1  'Skovglimt_2' ''               495 
+	'_Smedeparken 3.obj':
+		Initial shapes:
+			54, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 41
+			  | Name          | Material | Polygons 
+			==+===============+==========+==========
+			1  'Smedeparken_3' ''                41 
+	'_Sneppevej 4.obj':
+		Initial shapes:
+			55, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 39
+			  | Name        | Material | Polygons 
+			==+=============+==========+==========
+			1  'Sneppevej_4' ''                39 
+	'_Sportsvej 15.obj':
+		Initial shapes:
+			56, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 30
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Sportsvej_15' ''                30 
+	'_Storgade 7A.obj':
+		Initial shapes:
+			57, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 63
+			  | Name        | Material | Polygons 
+			==+=============+==========+==========
+			1  'Storgade_7A' ''                63 
+	'_Storgade 7C.obj':
+		Initial shapes:
+			58, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 71
+			  | Name        | Material | Polygons 
+			==+=============+==========+==========
+			1  'Storgade_7C' ''                71 
+	'_Søholm 1.obj':
+		Initial shapes:
+			59, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 106
+			  | Name     | Material | Polygons 
+			==+==========+==========+==========
+			1  'Søholm_1' ''               106 
+	'_Sømosevej 44.obj':
+		Initial shapes:
+			60, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 316
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Sømosevej_44' ''               316 
+	'_Sømosevej 46.obj':
+		Initial shapes:
+			61, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 18
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Sømosevej_46' ''                18 
+	'_Sømosevej 48.obj':
+		Initial shapes:
+			62, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 272
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Sømosevej_48' ''               272 
+	'_Sømosevej 50.obj':
+		Initial shapes:
+			63, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 180
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Sømosevej_50' ''               180 
+	'_Søparken 1.obj':
+		Initial shapes:
+			64, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 66
+			  | Name       | Material | Polygons 
+			==+============+==========+==========
+			1  'Søparken_1' ''                66 
+	'_unnamed.obj':
+		Initial shapes:
+			65, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 73
+			  | Name    | Material | Polygons 
+			==+=========+==========+==========
+			1  'unnamed' ''                73 
+	'_unnamed_1.obj':
+		Initial shapes:
+			66, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 73
+			  | Name      | Material | Polygons 
+			==+===========+==========+==========
+			1  'unnamed_1' ''                73 
+	'_unnamed_2.obj':
+		Initial shapes:
+			67, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 192
+			  | Name      | Material | Polygons 
+			==+===========+==========+==========
+			1  'unnamed_2' ''               192 
+	'_unnamed_3.obj':
+		Initial shapes:
+			68, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 192
+			  | Name      | Material | Polygons 
+			==+===========+==========+==========
+			1  'unnamed_3' ''               192 
+	'_Thyrasvej 45.obj':
+		Initial shapes:
+			69, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 109
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Thyrasvej_45' ''               109 
+	'_Thyrasvej 47.obj':
+		Initial shapes:
+			70, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 26
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Thyrasvej_47' ''                26 
+	'_Tokesvej 1.obj':
+		Initial shapes:
+			71, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 481
+			  | Name       | Material | Polygons 
+			==+============+==========+==========
+			1  'Tokesvej_1' ''               481 
+	'_Veddevej 19A.obj':
+		Initial shapes:
+			72, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 82
+			  | Name         | Material | Polygons 
+			==+==============+==========+==========
+			1  'Veddevej_19A' ''                82 
+	'_Ventemøllevej 11.obj':
+		Initial shapes:
+			73, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 235
+			  | Name             | Material | Polygons 
+			==+==================+==========+==========
+			1  'Ventemøllevej_11' ''               235 
+	'_Ventemøllevej 30.obj':
+		Initial shapes:
+			74, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 197
+			  | Name             | Material | Polygons 
+			==+==================+==========+==========
+			1  'Ventemøllevej_30' ''               197 
+	'_Ventemøllevej 32A.obj':
+		Initial shapes:
+			75, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 235
+			  | Name              | Material | Polygons 
+			==+===================+==========+==========
+			1  'Ventemøllevej_32A' ''               235 
+	'_Ventemøllevej 32B.obj':
+		Initial shapes:
+			76, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 254
+			  | Name              | Material | Polygons 
+			==+===================+==========+==========
+			1  'Ventemøllevej_32B' ''               254 
+	'_Vibevej 7A.obj':
+		Initial shapes:
+			77, 
+		GEOMETRY:
+			Total Meshes: 1
+			Total Polygons: 267
+			  | Name       | Material | Polygons 
+			==+============+==========+==========
+			1  'Vibevej_7A' ''               267 
