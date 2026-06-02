@@ -16,7 +16,11 @@ export default function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <span className="logo">RAMBOLL</span>
+        <img
+          className="logo"
+          src="https://assets-eu-01.kc-usercontent.com:443/7c3778f1-714a-0155-9be8-162f4c282b22/25674e69-0e10-410a-a637-6f7665ccb064/ramboll.svg"
+          alt="Ramboll"
+        />
         <span className="title">Data Viewer — import · view · export</span>
         <span className="mode-badge">{mode}</span>
       </header>
