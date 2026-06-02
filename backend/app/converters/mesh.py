@@ -13,20 +13,38 @@ from pyproj import Transformer
 
 from . import fbx
 
-# UTM 32N (EPSG:25832) bounding box for Denmark + near neighbours.
-# If the mesh centroid falls inside, we interpret coordinates as real-world
-# UTM 32N and reproject to WGS84 for the Cesium anchor.
-_E_MIN, _E_MAX = 400_000.0, 900_000.0
-_N_MIN, _N_MAX = 5_900_000.0, 6_900_000.0
-_TO_WGS84 = Transformer.from_crs("EPSG:25832", "EPSG:4326", always_xy=True)
+# WGS84 bounding box for Denmark + near neighbours (used to validate reprojection).
+_DK_LAT = (54.0, 58.5)
+_DK_LON = (7.5, 16.0)
+
+# Building/terrain heights in Denmark are well within ±500 m.
+_MAX_HEIGHT = 500.0
+
+# Transformers for UTM zone 32N and 33N (both used in Danish projects).
+_T32 = Transformer.from_crs("EPSG:25832", "EPSG:4326", always_xy=True)
+_T33 = Transformer.from_crs("EPSG:25833", "EPSG:4326", always_xy=True)
 
 
 def _centroid_origin(centre: np.ndarray) -> list[float] | None:
-    """Return [lon, lat, height] if centre looks like UTM 32N, else None."""
-    cx, cy, cz = float(centre[0]), float(centre[1]), float(centre[2])
-    if _E_MIN <= cx <= _E_MAX and _N_MIN <= cy <= _N_MAX:
-        lon, lat = _TO_WGS84.transform(cx, cy)
-        return [lon, lat, cz]
+    """Return [lon, lat, height] if the centroid looks like Danish UTM, else None.
+
+    CityEngine (and most GIS-aware CAD tools) export OBJ with Y-up, meaning:
+      X = Easting,  Y = Elevation (metres),  Z = −Northing
+    We detect this by checking height (Y) and trying both UTM 32N and 33N.
+    """
+    x, y, z = float(centre[0]), float(centre[1]), float(centre[2])
+    easting, northing, height = x, -z, y  # Y-up: negate Z to recover northing
+
+    if abs(height) > _MAX_HEIGHT:
+        return None  # Y is not elevation — not a Y-up UTM file
+
+    for transformer in (_T32, _T33):
+        try:
+            lon, lat = transformer.transform(easting, northing)
+            if _DK_LAT[0] <= lat <= _DK_LAT[1] and _DK_LON[0] <= lon <= _DK_LON[1]:
+                return [lon, lat, height]
+        except Exception:  # noqa: BLE001
+            pass
     return None
 
 

@@ -45,15 +45,16 @@ export default function Viewer3D() {
       destination: Cesium.Cartesian3.fromDegrees(12.5683, 55.6761, 500_000),
     })
 
-    // Fixed directional light so geometry shading is always readable —
-    // sun-based lighting can be nearly overhead for Denmark in summer,
-    // washing out depth cues. This direction approximates afternoon sun from WSW.
+    // Directional light tuned for Denmark (lat ~56°N).
+    // Direction is the ECEF vector light rays travel (sun → scene).
+    // Computed for 45° elevation from SSW: illuminates rooftops and one wall face,
+    // giving strong depth cues without washing out the model.
     viewer.scene.light = new Cesium.DirectionalLight({
       direction: Cesium.Cartesian3.normalize(
-        new Cesium.Cartesian3(-1.0, -0.5, -1.0),
+        new Cesium.Cartesian3(-0.9, 0.31, -0.30),
         new Cesium.Cartesian3(),
       ),
-      intensity: 2.5,
+      intensity: 2.0,
     })
 
     viewerRef.current = viewer

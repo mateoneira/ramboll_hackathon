@@ -13,9 +13,13 @@ async function loadModel(viewer: Cesium.Viewer, layer: Layer): Promise<Cesium.Mo
     url: layer.glbUrl!,
     modelMatrix,
     scale: 1.0,
-    // Thin dark silhouette to make edges readable at any lighting angle.
-    silhouetteColor: Cesium.Color.fromCssColorString('#333333'),
+    // Thin dark silhouette makes edges readable at any lighting angle.
+    silhouetteColor: Cesium.Color.fromCssColorString('#222222'),
     silhouetteSize: 1.5,
+    // Raise ambient so shadow-side faces aren't pure black.
+    imageBasedLighting: new Cesium.ImageBasedLighting({
+      luminanceAtZenith: 0.6,
+    }),
   })
   // Guard against the viewer being destroyed while the model was loading.
   if (viewer.isDestroyed()) return model
