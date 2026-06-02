@@ -5,7 +5,7 @@ export interface Contact {
   /** Internal specialist name (shown in internal mode). */
   name: string
   role: string
-  email: string
+  email?: string
   phone?: string
   /** Public department landing page (shown in external mode CTA). */
   url: string
@@ -25,30 +25,32 @@ export interface ContactsFile {
 export const FALLBACK_CONTACTS: ContactsFile = {
   categoryToDepartment: {
     vector: 'Geospatial & GIS',
-    mesh: 'Surveying & Digital Engineering',
+    mesh: 'GIS & 3D',
     bim: 'Buildings & BIM',
   },
   contacts: {
     'Geospatial & GIS': {
       department: 'Geospatial & GIS',
-      name: 'Ramboll GIS Team',
-      role: 'Geospatial data specialists',
-      email: 'gis@ramboll.com',
-      url: 'https://www.ramboll.com/services/data-and-digital-solutions',
-    },
-    'Surveying & Digital Engineering': {
-      department: 'Surveying & Digital Engineering',
-      name: 'Ramboll Survey Team',
-      role: 'CAD & reality-capture specialists',
-      email: 'survey@ramboll.com',
-      url: 'https://www.ramboll.com/services/data-and-digital-solutions',
+      name: 'Frederik Marthedal Christiansen',
+      role: 'Head of Geospatial DK',
+      email: 'frmc@ramboll.dk',
+      phone: '+45 51 61 45 54',
+      url: 'https://www.ramboll.com/contact-us',
     },
     'Buildings & BIM': {
       department: 'Buildings & BIM',
-      name: 'Ramboll BIM Team',
-      role: 'Building information modelling specialists',
-      email: 'bim@ramboll.com',
-      url: 'https://www.ramboll.com/buildings',
+      name: 'Jeppe Bæklund',
+      role: 'Chief BIM Manager',
+      email: 'jepb@ramboll.dk',
+      phone: '+45 51 61 18 60',
+      url: 'https://www.ramboll.com/services-and-sectors/buildings/project-services/digital-design-and-bim',
+    },
+    'GIS & 3D': {
+      department: 'GIS & 3D',
+      name: 'Giota Zachariadou',
+      role: 'GIS and 3D Specialist',
+      email: 'pza@ramboll.dk',
+      url: 'https://www.ramboll.com/contact-us',
     },
   },
 }

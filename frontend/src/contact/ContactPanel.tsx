@@ -30,7 +30,7 @@ export default function ContactPanel({ mode }: { mode: ProductMode }) {
         <>
           <div className="person">{contact.name}</div>
           <div className="role">{contact.role}</div>
-          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          {contact.email && <a href={`mailto:${contact.email}`}>{contact.email}</a>}
           {contact.phone && <a href={`tel:${contact.phone}`}>{contact.phone}</a>}
         </>
       ) : (
